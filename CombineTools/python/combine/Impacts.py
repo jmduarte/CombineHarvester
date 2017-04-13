@@ -92,6 +92,7 @@ class Impacts(CombineToolBase):
             for exParam in exclude:
                 if 'rgx{' in exParam:
                     pattern = exParam.replace("'rgx{","").replace("}'","")
+                    pattern = pattern.replace("rgx{","").replace("}","")
                     for param in paramList:
                         if re.search(pattern, param):
                             expExclude.append(param)
