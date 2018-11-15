@@ -39,8 +39,8 @@ with open(args.input) as jsonfile:
 plot.ModTDRStyle(l=0.4, b=0.10, width=700)
 
 # We will assume the first POI is the one to plot
-POIs = [ele['name'] for ele in data['POIs']]
-POI_fit = data['POIs'][0]['fit']
+POIs = [ele['name'] for ele in data['POIs']][::-1]
+POI_fit = data['POIs'][-1]['fit']
 
 # Sort parameters by largest absolute impact on this POI
 data['params'].sort(key=lambda x: abs(x['impact_%s' % POIs[0]]), reverse=True)

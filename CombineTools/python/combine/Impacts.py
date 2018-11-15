@@ -92,12 +92,16 @@ class Impacts(CombineToolBase):
             for exParam in exclude:
                 if 'rgx{' in exParam:
                     pattern = exParam.replace("'rgx{","").replace("}'","")
+                    pattern = pattern.replace("rgx{","").replace("}","")
+                    print pattern
                     for param in paramList:
                         if re.search(pattern, param):
                             expExclude.append(param)
                 else:
                     expExclude.append(exParam)
+            print expExclude
             paramList = [x for x in paramList if x not in expExclude]
+            print paramList
             
 
         print 'Have nuisance parameters: ' + str(len(paramList))

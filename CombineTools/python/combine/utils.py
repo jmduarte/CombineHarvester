@@ -102,6 +102,10 @@ def get_singles_results(file, scanned, columns):
     if f is None or f.IsZombie():
         return None
     t = f.Get("limit")
+    try:
+        if t.InheritsFrom("TTree"): pass
+    except:
+        return None
     for i, param in enumerate(scanned):
         res[param] = {}
         for col in columns:
